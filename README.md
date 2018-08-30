@@ -18,7 +18,7 @@ What's mozc-for-androidstudio?
 ------------------------------
 It is a customized mozc for developers who use android studio.
 This mozc has been modified to build only in android studio.
-For more information on mozc, see [What's Mozc?]().
+For more information on mozc, see [What's Mozc?](#whats-mozc).
 
 License
 -------
