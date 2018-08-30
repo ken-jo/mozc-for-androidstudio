@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    sourceSets.main.java.srcDirs 'src/main/src'
+    sourceSets.main.jniLibs.srcDir 'libs'
+    sourceSets.main.jni.srcDirs 'jni'
+    useLibrary 'org.apache.http.legacy'
+    externalNativeBuild {
+        ndkBuild {
+            path "jni/Android.mk"
+        }
+    }
+    defaultConfig {
+        ndk {
+            moduleName = 'mozc'
+            abiFilters 'armeabi-v7a', 'x86_64'
+        }
+
+        minSdkVersion 23
+        targetSdkVersion 23
+        versionCode 1
+        versionName "2.23.2815.103-arm"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:support-v13:27.+'
+}
